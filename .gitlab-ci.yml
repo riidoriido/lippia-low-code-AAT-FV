@@ -1,6 +1,5 @@
 stages:
   - Test
-  - Publish
 
 Test:
   stage: Test
@@ -18,13 +17,3 @@ Test:
     when: always
     paths:
       - target/reports/
-
-GitHub publish:
-  stage: Publish
-  image: bitnami/git:2.40.1
-  script:
-    - git remote add github https://$GITHUB_USER:$GITHUB_TOKEN@github.com/Crowdar/lippia-low-code-sample-project.git
-    - git checkout main
-    - git push -u github main
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "main"'
