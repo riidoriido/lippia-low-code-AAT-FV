@@ -14,7 +14,7 @@ Feature: example Stars Wars with Graphql
     * define idFilm = $.data.allFilms.films.[0].id
 
   @execute
-  Scenario: get all films of saga
+  Scenario: get film of saga by id
     Given call Sample-GraphQL.feature@getAllFilms
     And base url https://swapi-graphql.netlify.app
     And endpoint /.netlify/functions/index
