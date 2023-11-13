@@ -148,8 +148,10 @@ environments {
 
 ####Alternatively we can use the following notation, if we have defined the url in the lippia.conf file
 
-
-      Given base url env.base_url_rickAndMorty
+| Version 3.3.0.0                          | Version 3.3.0.1 or newer                     |
+|:-----------------------------------------|:---------------------------------------------|
+| Given base url env.base_url_rickAndMorty | Given base url $(env.base_url_rickAndMorty)  |
+   
 
 
 --------------------------------------------------------------
@@ -205,13 +207,22 @@ environments {
 
       Given body \S+
 
+
 ### For example
 
-     Given body name_file.json
+| Version 3.3.0.0                        | Version 3.3.0.1 or newer                           |
+|:---------------------------------------|:---------------------------------------------------|
+| Given body name_file.json              | Given body jsons/bodies/name_file.json             |
+
+     
 
 #### Or you can create a new folder inside it :
 
-    Given body new_folder/name_file.json
+| Version 3.3.0.0                        | Version 3.3.0.1 or newer                           |
+|:---------------------------------------|:---------------------------------------------------|
+| Given body new_folder/name_file.json   | Given body jsons/bodies/new_folder/name_file.json  |
+
+    
 
 ---------------------------------------------------------------------------------
 
@@ -280,8 +291,11 @@ environments {
 
 ### For example
 
-         And validate schema character.json
+| Version 3.3.0.0                         | Version 3.3.0.1 or newer                          |
+|:----------------------------------------|:--------------------------------------------------|
+| And validate schema character.json      | And validate schema jsons/schemas/character.json  |
 
+      
 ## Steps Glossary
 
 | ENGLISH                                                              | SPANISH                                                           |
