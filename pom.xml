@@ -115,9 +115,6 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${apiExample.runner}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <systemPropertyVariables>
-
-                	</systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
