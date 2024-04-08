@@ -26,28 +26,28 @@ $ git clone https://github.com/Crowdar/lippia-low-code-sample-project.git && cd 
 $  mvn clean test -Dcucumber.tags=@Sample -Denvironment=default
 ```
 
-
 ## Contents
 
 1. [Variables](##Variables)    
-   I. [Define](###I.Define)
+   I. [Define](#title_define)
 2. [Properties](../path/to/properties)   
-   I. [Lippia configuration file](#Lippia Configuration file)   
+   I. [Lippia configuration file](#title_lippia_conf_file)   
    II. [Basic properties file](../path/to/properties)
 3. [Requests](../path/to/requests)   
-   I. [Base URL](##I.BaseURL)   
-   II. [Endpoint](##II.Endpoint)   
-   III. [Headers](##III.Headers)   
-   IV. [Body](##IV.Body)   
-   V. [HTTP Method](#HTTP Method)
-4. [Assertions](#Assertions)   
-   I. [Status code](##I.Status Code)
+   I. [Base URL](#title_base_url)   
+   II. [Endpoint](#title_endpoint)   
+   III. [Headers](#title_headers)   
+   IV. [Body](#title_body)   
+   V. [HTTP Method](#title_http_method)
+4. [Assertions](#title_assertions)   
+   I. [Status code](#title_status_code)
    II. [JSON](##II.JSON)
-5. [Steps Glossary](##StepsGlossary)
+   III.[Schema](#title_schema)
+5. [Steps Glossary](#title_step_glosary)
 
 ## Variables
 
-### I. Define
+### I. <a id="title_define"></a>Define
 
 #### In order to define a variable and assign it with a constant value or a variable value use :
 
@@ -76,7 +76,7 @@ $  mvn clean test -Dcucumber.tags=@Sample -Denvironment=default
 
 --------------------------------------------------------------
 
-## Lippia Configuration file
+## <a id="title_lippia_conf_file"></a>Lippia Configuration file
 
 ### (lippia.config)
 
@@ -130,7 +130,7 @@ environments {
 
      -Denvironment=test
 
-## Enviroment Manager
+## <a id="title_environment_manager"></a>Enviroment Manager
 
 #### To obtain data from the Environment manager we use the following method, in this case it is not allowed to obtain the base url
 
@@ -138,25 +138,24 @@ environments {
 
 --------------------------------------------------------------
 
-## I.Base URL
-####The base url can be defined by the following step, it is simply to replace the regular expression /\+S by the url :
+## I.<a id="title_base_url"></a>Base URL
+
+#### The base url can be defined by the following step, it is simply to replace the regular expression /\+S by the url :
 
 ### For example
+
       base url \S+
       Given base url https://rickandmortyapi.com/api/
 
-
-####Alternatively we can use the following notation, if we have defined the url in the lippia.conf file
+#### Alternatively we can use the following notation, if we have defined the url in the lippia.conf file
 
 | Version 3.3.0.0                          | Version 3.3.0.1 or newer                     |
 |:-----------------------------------------|:---------------------------------------------|
 | Given base url env.base_url_rickAndMorty | Given base url $(env.base_url_rickAndMorty)  |
-   
-
 
 --------------------------------------------------------------
 
-## II.Endpoint
+## II.<a id="title_endpoint"></a>Endpoint
 
 #### You can easily replace the endpoint value in the regular expression of the "\S+" step :
 
@@ -169,7 +168,7 @@ environments {
 
 ---------------------------------------------------------------------------------
 
-## III.Headers
+## III.<a id="title_headers"></a>Headers
 
 #### You can set a header just by defining the step and filling the key and the value as many times as you need to do it :
 
@@ -182,7 +181,7 @@ environments {
 
 ---------------------------------------------------------------------------------
 
-## IV.Body
+## IV.<a id="title_body"></a>Body
 
 ```
 ├── automation-reestructuracion-gateway
@@ -207,14 +206,11 @@ environments {
 
       Given body \S+
 
-
 ### For example
 
 | Version 3.3.0.0                        | Version 3.3.0.1 or newer                           |
 |:---------------------------------------|:---------------------------------------------------|
 | Given body name_file.json              | Given body jsons/bodies/name_file.json             |
-
-     
 
 #### Or you can create a new folder inside it :
 
@@ -222,11 +218,9 @@ environments {
 |:---------------------------------------|:---------------------------------------------------|
 | Given body new_folder/name_file.json   | Given body jsons/bodies/new_folder/name_file.json  |
 
-    
-
 ---------------------------------------------------------------------------------
 
-- ## HTTP Method
+- ## <a id="title_http_method"></a>HTTP Method
 
 #### The HTTP Methods supported by steps are : GET | POST | PUT | PATCH | DELETE
 
@@ -236,9 +230,9 @@ environments {
 
 ---------------------------------------------------------------------------------
 
-- # Assertions
+- # <a id="title_assertions"></a>Assertions
 
-## I. Status Code
+## I. <a id="title_status_code"></a>Status Code
 
 #### The step to assert the HTTP response code is as follows :
 
@@ -250,7 +244,7 @@ environments {
 
 #### If the HTTP response code is anything other than what is expected, this assertion will result in the test failing.
 
-## II. JSON
+## II. <a id="mi-seccion"></a>JSON
 
 #### You can make assertions on any attribute of the obtained response, whether it's integer, float, double, string, or boolean value by referencing it by its name :
 
@@ -262,7 +256,7 @@ environments {
 
        And response should be $.status = Alive
 
-### Schemas
+### <a id="title_schema"></a>Schemas
 
 ```
 ├── automation-reestructuracion-gateway
@@ -295,30 +289,29 @@ environments {
 |:----------------------------------------|:--------------------------------------------------|
 | And validate schema character.json      | And validate schema jsons/schemas/character.json  |
 
-      
-## Steps Glossary
+## <a id="title_step_glosary"></a>Steps Glossary
 
-| ENGLISH                                                              | SPANISH                                                           |
-|:---------------------------------------------------------------------|:------------------------------------------------------------------|
-| add query parameter '\<any>' = \<any>                                                | agregar parametro a la query '\<any>' = \<any>                    |
-| base url \S+                                                                                  | base url \S+                                                      |
-| body \S+                                                                                      | body \S+                                                          |
-| call \S+.feature[@:\$]\S+                                                            | invocar \S+.feature[@:\$]\S+                                      |
-| create connection database '\<any>'                                                  | crear conexion a la base de datos '\<any>'                        |
-| define [^\d]\S+ = \S+                                                                        | definir  [^\d]\S+ = \S+                                           |
-| delete keyValue \<any> in body \<any>                                                | eliminar clave \<any> en el  body \<any>                          |
-| endpoint \S+                                                                                  | endpoint \S+                                                      |
-| execute method GET l POST l PUT l PATCH l DELETE                         | ejecutar metodo GET l POST l PUT l PATCH l DELETE                 |
-| execute query '\<any>'                                                                     | ejecutar query '\<any>'                                           |
-| header \S+ = \S+                                                                            | header \S+ = \S+                                                  |
-| And I save from result JSON the attribute <any> on variable <any>          | guardo del resultado JSON el atributo <any> en la variable \<any> |
-| param \S+ = \S+                                                                                | param \S+ = \S+                                                   |
-| response should be [^\s].+ = [^\s].*                                                   | la respuesta debe ser [^\s].+ = [^\s].*                           |
-| response should be [^\s].+ contains [^\s].*                                         | la respuesta debe ser [^\s].+ contiene [^\s].*                    |
-| set value \<any> of key \<any> in body \<any>                                       | setear el valor \<any> de la clave \<any> en el body \<any>       |
-| the status code should be \<number>                                                    | el status code debe ser \<number>                                 |
-| validate field '\<any>' = \<any>                                                          | validar el campo '\<any>' = \<any>                                |
-| validate schema \<string>                                                                 | validar schema \<string>                                          |
-
+| ENGLISH                                                              | SPANISH                                                                 |
+|:---------------------------------------------------------------------|:------------------------------------------------------------------------|
+| add query parameter '\<any>' = \<any>                                | agregar parametro a la query '\<any>' = \<any>                          |
+| base url \S+                                                         | base url \S+                                                            |
+| body \S+                                                             | body \S+                                                                |
+| call \S+.feature[@:\$]\S+                                            | invocar \S+.feature[@:\$]\S+                                            |
+| create connection database '\<any>'                                  | crear conexion a la base de datos '\<any>'                              |
+| define [^\d]\S+ = \S+                                                | definir  [^\d]\S+ = \S+                                                 |
+| delete keyValue \<any> in body \<any>                                | eliminar clave \<any> en el  body \<any>                                |
+| endpoint \S+                                                         | endpoint \S+                                                            |
+| execute method GET l POST l PUT l PATCH l DELETE                     | ejecutar metodo GET l POST l PUT l PATCH l DELETE                       |
+| execute query '\<any>'                                               | ejecutar query '\<any>'                                                 |
+| header \S+ = \S+                                                     | header \S+ = \S+                                                        |
+| And I save from result JSON the attribute <any> on variable <any>    | guardo del resultado JSON el atributo <any> en la variable \<any>       |
+| param \S+ = \S+                                                      | param \S+ = \S+                                                         |
+| response should be [^\s].+ = [^\s].*                                 | la respuesta debe ser [^\s].+ = [^\s].*                                 |
+| response should be [^\s].+ contains [^\s].*                          | la respuesta debe ser [^\s].+ contiene [^\s].*                          |
+| set value \<any> of key \<any> in body \<any>                        | setear el valor \<any> de la clave \<any> en el body \<any>             |
+| the status code should be \<number>                                  | el status code debe ser \<number>                                       |
+| validate field '\<any>' = \<any>                                     | validar el campo '\<any>' = \<any>                                      |
+| validate schema \<string>                                            | validar schema \<string>                                                |
+| verify the response ([^\\s].+) '(equals &#124; contains)' ([^\\s].*) | verificar la respuesta ([^\\s].+) '(equals &#124; contains)' ([^\\s].*) |
 
 

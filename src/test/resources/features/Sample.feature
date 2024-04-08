@@ -14,6 +14,7 @@ Feature: Sample
     Then the status code should be 200
     And response should be $.name = <name>
     And response should be $.status = <status>
+    And verify the response $.name 'equals' <name>
     And validate schema jsons/schemas/character.json
 
     Examples:
