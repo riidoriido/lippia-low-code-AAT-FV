@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.lippia</groupId>
         <artifactId>root</artifactId>
-        <version>3.3.0.1</version>
+        <version>3.3.0.2</version>
     </parent>
 
     <groupId>com.Crowdar</groupId>
@@ -49,7 +49,7 @@
         <dependency>
 	        <groupId>io.lippia</groupId>
 	        <artifactId>core</artifactId>
-	        <version>3.3.0.1</version>
+	        <version>3.3.0.2</version>
         </dependency>
         <dependency>
             <groupId>io.lippia.report</groupId>
@@ -115,11 +115,6 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${apiExample.runner}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <systemPropertyVariables>
-						<LIPPIA_RS_API_HOST>https://rsapi.automation.crowdaronline.com</LIPPIA_RS_API_HOST>
-	                    <LIPPIA_RS_PROJECT_NAME>API Sample</LIPPIA_RS_PROJECT_NAME>
-	                    <LIPPIA_RS_REPORT_NAME>Local - build</LIPPIA_RS_REPORT_NAME>
-                	</systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
