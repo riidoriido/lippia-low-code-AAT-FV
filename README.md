@@ -222,7 +222,7 @@ environments {
 
 
 ---------------------------------------------------------------------------------
-### IV-I. SET
+### I. SET
 
 
 #### If you need to modify the value of any attribute in the body, you can use the Step "set value of key \S+ in body \S+".
@@ -235,7 +235,7 @@ environments {
 
 ---------------------------------------------------------------------------------
 
-###IV-II. DELETE
+### II. DELETE
 
 ####Now, if you need to remove an attribute from the body, you can use Step "delete keyValue <any> in body <any>", This one requires only two parameters: the attribute name and the name of the JSON file containing the request.
 
