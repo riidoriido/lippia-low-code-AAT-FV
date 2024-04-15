@@ -225,7 +225,7 @@ environments {
 ### I. SET
 
 
-#### If you need to modify the value of any attribute in the body, you can use the Step "set value of key \S+ in body \S+".
+#### If you need to modify the value of any attribute in the body, you can use the Step "set value <any> of key <any> in body <any>".
 #### We don't need the Step "body \S+" in our scenario because this step accesses the entire JSON file and also makes the necessary modifications.
 #### In this case, it requires three parameters: the value to be assigned, the name of the attribute that will take the value of the first parameter, and the path with the name of the JSON file.
 
