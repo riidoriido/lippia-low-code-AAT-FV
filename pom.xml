@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.lippia</groupId>
         <artifactId>root</artifactId>
-        <version>3.3.0.2-SNAPSHOT</version>
+        <version>3.3.0.2</version>
     </parent>
 
     <groupId>com.Crowdar</groupId>
@@ -49,7 +49,7 @@
         <dependency>
 	        <groupId>io.lippia</groupId>
 	        <artifactId>core</artifactId>
-	        <version>3.3.0.2-SNAPSHOT</version>
+	        <version>3.3.0.2</version>
         </dependency>
         <dependency>
             <groupId>io.lippia.report</groupId>

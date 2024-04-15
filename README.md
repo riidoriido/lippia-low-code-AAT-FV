@@ -202,7 +202,8 @@ environments {
 │        
 ```
 
-#### You can reference a json file created in the default location (jsons/bodies folder) :
+#### You can reference a json file created in the default location (jsons/bodies folder) : 
+####If the body doesn't need modification of any attribute or value, then this step is all that's required.
 
       Given body \S+
 
@@ -218,6 +219,32 @@ environments {
 |:---------------------------------------|:---------------------------------------------------|
 | Given body new_folder/name_file.json   | Given body jsons/bodies/new_folder/name_file.json  |
 
+
+
+---------------------------------------------------------------------------------
+### IV-I. SET
+
+
+#### If you need to modify the value of any attribute in the body, you can use the Step "set value of key \S+ in body \S+".
+#### We don't need the Step "body \S+" in our scenario because this step accesses the entire JSON file and also makes the necessary modifications.
+#### In this case, it requires three parameters: the value to be assigned, the name of the attribute that will take the value of the first parameter, and the path with the name of the JSON file.
+
+### For example
+
+         And set value 15 of key tags[1].id in body jsons/bodies/body2.json
+
+---------------------------------------------------------------------------------
+
+###IV-II. DELETE
+
+####Now, if you need to remove an attribute from the body, you can use Step "delete keyValue <any> in body <any>", This one requires only two parameters: the attribute name and the name of the JSON file containing the request.
+
+### For example
+
+           
+           And delete keyValue tags[0].id in body jsons/bodies/body2.json
+           
+      
 ---------------------------------------------------------------------------------
 
 - ## <a id="title_http_method"></a>HTTP Method
@@ -252,9 +279,18 @@ environments {
 
       And response should be name = Rick Sanchez
 
-### Another way to reference it is by prepending "$." before the attribute name :
+#### Another way to reference it is by prepending "$." before the attribute name :
 
        And response should be $.status = Alive
+
+
+#### The following step, allows for validations based on equality or containing a value that matches the response obtained based on the provided parameter.
+
+      And verify the response [^\s].+ 'equals' [^\s].*
+      And verify the response [^\s].+ 'contains' [^\s].*
+
+### For example
+      And verify the response name 'contains' dog
 
 ### <a id="title_schema"></a>Schemas
 
