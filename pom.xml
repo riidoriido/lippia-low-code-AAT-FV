@@ -8,19 +8,25 @@
         <artifactId>root</artifactId>
         <version>3.3.0.2</version>
     </parent>
+    <developers>
+        <developer>
+            <id>riido</id>
+            <name>Fermin Vazquez</name>
+            <email>fv.shutter@gmail.com</email>
+        </developer>
+    </developers>
 
     <groupId>com.Crowdar</groupId>
     <artifactId>lippia-low-code-sample-project</artifactId>
     <name>low-code-automation</name>
     <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
-
-    <properties>
+<properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <base.api.url>https://rickandmortyapi.com/api</base.api.url>
+        <base.api.url>https://api.clockify.me/api</base.api.url>
         <cucumber.stepsDefinitions>--glue io/lippia/api/lowcode/steps --glue ar/steps</cucumber.stepsDefinitions>
         <cucumber.hooks>--glue com/crowdar/bdd/cukes --glue ar/apiExampleProject/hook</cucumber.hooks>
-		<cucumber.tags>@petstore</cucumber.tags>
+		<cucumber.tags>@EditProject</cucumber.tags>
         <crowdar.cucumber.plugins>--plugin pretty --plugin com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter: --plugin com.crowdar.examples.listeners.CucumberListener:</crowdar.cucumber.plugins>
         <crowdar.reporter.avent>true</crowdar.reporter.avent>
         <crowdar.extent.host.name>LocalMachine</crowdar.extent.host.name>
@@ -131,6 +137,5 @@
 			<url>https://nexus-v3-repositories.automation.crowdaronline.com/repository/maven-public/</url>
 		</repository>
 	</repositories>
-    
 
 </project>
