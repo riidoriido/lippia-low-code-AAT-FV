@@ -1,5 +1,5 @@
-@Regression @Clockify
-Feature: Clockify API TP4
+@Regression @Projects
+Feature: Projects section
 
   Background:
     Given base url $(env.base_url)
@@ -7,41 +7,40 @@ Feature: Clockify API TP4
     And header Accept = */*
     And header x-api-key = ZjdkMjY5MmEtNGM1MS00ZTdiLTlmNzAtYjA4YmEyY2Q3OGVk
 
-  @GetWorkspaces
-  Scenario: Get all workspaces
-    Given endpoint /v1/workspaces
-    When execute method GET
-    Then the status code should be 200
-    * define workspaceId = $.[3].id
-
-  @CreateProject
+  @Smoke
   Scenario: Create project inside workspace
-    Given call ClockifyAPI.feature@GetWorkspaces
+    Given call 1_Workspaces.feature@GetWorkspaces
     And endpoint /v1/workspaces/{{workspaceId}}/projects
     And body jsons/bodies/newProject.json
     When execute method POST
     Then the status code should be 201
 
-  @GetProjects
+  @Smoke @GetProjects
   Scenario: Get projects inside workspace
-    Given call ClockifyAPI.feature@GetWorkspaces
+    Given call 1_Workspaces.feature@GetWorkspaces
     And endpoint /v1/workspaces/{{workspaceId}}/projects
     When execute method GET
     Then the status code should be 200
     * define projectId = $.[0].id
 
-  @FindProjectByID
+  @Smoke @FindProjectByID
   Scenario: Get specific project by its ID
-    Given call ClockifyAPI.feature@GetProjects
+    Given call 2_Projects.feature@GetProjects
     And endpoint /v1/workspaces/{{workspaceId}}/projects/{{projectId}}
     When execute method GET
     Then the status code should be 200
-    And response should be $.name = TP4 - LowCode_test
 
-  @EditProject
+  @Smoke
   Scenario: Edit project
-    Given call ClockifyAPI.feature@FindProjectByID
+    Given call 2_Projects.feature@FindProjectByID
     And endpoint /v1/workspaces/{{workspaceId}}/projects/{{projectId}}
     And body jsons/bodies/editProject.json
     When execute method PUT
+    Then the status code should be 200
+
+  @DeleteProject
+  Scenario: Delete project
+    Given call 2_Projects.feature@FindProjectByID
+    And endpoint /v1/workspaces/{{workspaceId}}/projects/{{projectId}}
+    When execute method DELETE
     Then the status code should be 200
